@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import App from './App.jsx'
 import {
@@ -9,12 +9,13 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Signin from './pages/Signin';
-import MovieLists from './pages/MovieLists';
 import AdminRoute from './protectedRoutes/AdminRoute';
 import AdminLayout from './layouts/AdminLayout';
 import TheatresPage from './pages/TheatresPage';
 import UsersListPage from './pages/UsersListPage';
 import ReportPage from './pages/ReportPage';
+// import AddMovieForm from './ui/AddMovieForm';
+import MoviePage from './pages/MoviePage';
 
 
 const router = createBrowserRouter([
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/movies',
-        element: <AdminRoute><MovieLists /></AdminRoute>
+        element: <AdminRoute><MoviePage /></AdminRoute>
+      },
+      {
+        path: '/sample-check',
+        element: <TheatresPage />
       },
       {
         path: '/theatres',

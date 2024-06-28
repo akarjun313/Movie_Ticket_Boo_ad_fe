@@ -12,14 +12,13 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const schema = yup.object({
     email: yup.string().email('Enter a valid email').required('Email required'),
     password: yup.string().min(6).required('Enter your password'),
-})
-    .required()
+}).required()
 
 
 function Copyright(props) {
@@ -42,12 +41,6 @@ export default function Signin() {
 
     const navigate = useNavigate();
 
-    // React.useEffect(()=>{
-    //     const signIn = async () =>{
-    //         await axios.post("http://localhost:3210/api/v1/admin/signin")
-    //     }
-    // },[])
-
     const {
         register,
         handleSubmit,
@@ -60,14 +53,14 @@ export default function Signin() {
             console.log(res.data)
             
             if(res.data.success == true){
-                toast.success(res.data)
+                toast.success(res.data.message)
                 navigate('/movies')
             }else{
                 toast.error(res.data.message)
             }
             
         } catch (error) {
-            toast.error(res.data)
+            toast.error("Error occured")
             console.log(error)
         }
 
